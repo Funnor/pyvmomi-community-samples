@@ -22,12 +22,17 @@ si = service_instance.connect(args)
 
 VM = None
 if args.uuid:
+    print(args.uuid)
     VM = si.content.searchIndex.FindByUuid(None, args.uuid, True, True)
+    print(VM)
 elif args.dns_name:
+    print(2)
     VM = si.content.searchIndex.FindByDnsName(None, args.dns_name, True)
 elif args.vm_ip:
+    print(3)
     VM = si.content.searchIndex.FindByIp(None, args.vm_ip, True)
 elif args.vm_name:
+    print(4)
     content = si.RetrieveContent()
     VM = pchelper.get_obj(content, [vim.VirtualMachine], args.vm_name)
 
